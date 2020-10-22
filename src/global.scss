@@ -24,3 +24,12 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.wider-modal {
+  --backdrop-opacity: 0.8 !important;
+  .modal-wrapper {
+    --height: 156px !important;
+    position: absolute;
+    bottom: 0%;
+  } 
+}

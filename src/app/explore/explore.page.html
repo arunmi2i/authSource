@@ -1,0 +1,184 @@
+
+<ion-content fullscreen>
+  <div style="margin-top: 65px;">
+    <div class="title-head">
+      <span class="card-title ">Your interests</span>
+    </div>
+    <ion-slides [options]="sliderConfig" pager>
+        <!-- <h4>Your Interest</h4> -->
+      <ion-slide *ngFor="let card of [0,1,2,3,4]">
+        <div >
+        <ion-card style="background: #201C30;">
+          <ion-img src="../../assets/images/swim.png"></ion-img>
+          <ion-card-header>
+            <!-- <ion-card-subtitle>Subtitle</ion-card-subtitle> -->
+            <ion-card-title class="card-head">5 Common Errors Endurance Athletes Make in Strength Training</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            jsdfkjwe
+            erreerfbwe jwenfbgwe jbwe  hjbwe
+            <br>
+            fdagwq
+          </ion-card-content>
+          <ion-footer>
+            <ion-row>
+              <div class="padding">
+                <ion-col >
+                    <ion-icon src="../../assets/icon/like.svg"></ion-icon>
+                </ion-col>
+              </div>
+              <div class="padding">
+                <ion-col>
+                  <ion-icon src="../../assets/icon/upload.svg"></ion-icon>
+                </ion-col>
+              </div>
+              <ion-col></ion-col>
+              <div>
+                <ion-col>
+                  <ion-button size="small" color="primary-contrast" float-right class="save-btn">Save</ion-button>
+                </ion-col>
+              </div>
+            </ion-row>
+          </ion-footer>
+        </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  
+  <div>
+    <div class="title-head">
+      <span class="card-title">Today for you</span>
+    </div>
+    <ion-slides [options]="categorySlideConfig">
+      <ion-slide *ngFor="let card of [0,1,2,3]">
+        <div>
+        <ion-card style="background: #5151D4; color: #F3F3F3;">
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content>
+            <span>Running</span>
+          </ion-card-content>
+        </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div>
+    <div class="title-head">
+      <div>
+        <span class="card-title">Questions</span><br>
+        <span style="font-size:12px;">By Authsource Community</span>
+      </div>
+      <div>
+          <ion-button size="small" color="primary-contrast" float-right style="text-transform:none!important;color:black;">+ Ask</ion-button>
+      </div>
+    </div>
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let card of [0,1,2,3]">
+        <ion-card style="background: #201C30;">
+          <ion-card-header style="background-color: #eeede5;">
+            <ion-card-subtitle style="color: #100d1f;">
+                I’m having a knee pain for a very long time. Is there any good running shoe that I can use?
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <span>Hey, Hope this one helps you</span>
+            <br>
+            <a >amazon.com/shoes/37974994</a>
+          </ion-card-content>
+          <ion-footer>
+            <ion-row>
+              <div class="padding">
+                <ion-col >
+                    <ion-icon src="../../assets/icon/like.svg"></ion-icon>
+                </ion-col>
+              </div>
+              <div class="padding">
+                <ion-col>
+                  <ion-icon src="../../assets/icon/upload.svg"></ion-icon>
+                </ion-col>
+              </div>
+              <ion-col></ion-col>
+              <div>
+                <ion-col>
+                  <ion-button size="small" color="primary-contrast" float-right class="save-btn">Save</ion-button>
+                </ion-col>
+              </div>
+            </ion-row>
+          </ion-footer>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div>
+    <div class="title-head">
+      <span class="card-title">Popular collections</span>
+    </div>
+    <ion-slides [options]="categorySlideConfig">
+      <ion-slide *ngFor="let card of [0,1,2,3]">
+        <div>
+        <ion-card style="background-image: url('../../assets/icon/running.jpg')">
+          <!-- <ion-img src="../../assets/icon/running.jpg"></ion-img> -->
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content style="color: #f3f3f3;">
+            <span style="font-size: 14px">Endurance</span><br>
+            <span>@author</span>
+          </ion-card-content>
+        </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div>
+    <div class="title-head">
+      <span class="card-title">Top 10</span>
+    </div>
+    <ion-slides [options]="verticalSlider">
+      <ion-slide *ngFor="let card of [0,1,2,3]">
+        <div>
+        <ion-card style="background: #201C30;">
+          <ion-img src="../../assets/images/swimming.png" style="height: 197px"></ion-img>
+          <ion-card-header>
+            <ion-card-title class="card-head">5 Common Errors Endurance Athletes Make in Strength Training</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="font-size: 13px; text-align:left;">
+              As I look back over my career as a strength coach and movement educator, I would have never
+          </ion-card-content>
+          <ion-footer>
+            <ion-row>
+              <div class="padding">
+                <ion-col >
+                    <ion-icon src="../../assets/icon/like.svg"></ion-icon>
+                </ion-col>
+              </div>
+              <div class="padding">
+                <ion-col>
+                  <ion-icon src="../../assets/icon/upload.svg"></ion-icon>
+                </ion-col>
+              </div>
+              <ion-col></ion-col>
+              <div>
+                <ion-col>
+                  <ion-button size="small" color="primary-contrast" float-right class="save-btn">Save</ion-button>
+                </ion-col>
+              </div>
+            </ion-row>
+          </ion-footer>
+          <!-- <ion-footer>
+            <ion-row style="justify-content: flex-end; padding-right:5px">
+              <ion-button size="small" color="primary-contrast" float-right class="save-btn">Save</ion-button>
+            </ion-row>
+          </ion-footer> -->
+        </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+</ion-content>

@@ -1,0 +1,16 @@
+.searchbar {
+  text-align: center;
+}
+
+.searchbar ion-icon {
+  right: 16px !important;
+  left: auto !important;
+}
+
+.wider-modal {
+  --backdrop-opacity: 0.8 !important;
+  .modal-wrapper {
+    --height: 40% !important;
+    position: absolute;
+  } 
+}

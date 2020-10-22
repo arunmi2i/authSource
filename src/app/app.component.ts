@@ -10,6 +10,26 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  showSubCategory: boolean = false;
+  sideMenu: any = [
+    {
+      title: 'Running',
+      url: '',
+      subCategory:[
+        {title:'Shoes', url: '/'},
+        {title:'Strenth', url: ''}
+      ]
+    },
+    {
+      title: 'Swimming',
+      url: '',
+      subCategory:[
+        {title:'Suit', url: '/'},
+        {title:'Yoga', url: ''}
+      ]
+    }
+  ]
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -23,5 +43,10 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  toggleSubCategory(title) {
+    console.log(title);
+    this.showSubCategory = !this.showSubCategory;
   }
 }

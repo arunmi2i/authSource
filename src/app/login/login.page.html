@@ -1,0 +1,42 @@
+<ion-content>
+  <div class="login-pad" style="margin: 50px 12px 0 12px;">
+    <div text-center>
+      <span class="form-head">Create Account</span>
+    </div>
+
+    <form>
+    <div style="margin-top: 20px">
+      <div>
+        <div>
+          <ion-label class="form-label">Email</ion-label>
+          <span class="form-phoneLink">Use phone number instead</span>
+        </div>
+        
+          <!-- <ion-label>sd</ion-label> -->
+        <div style="margin-top: 10px;">
+          <ion-input class="input-field" name="email" style="height: 42px;" type="text" placeholder="Enter your email address" aria-hidden="true" ngModel required></ion-input>
+        </div>
+      </div>
+      <div style="margin-top:25px;">
+        <ion-label class="form-label">Password</ion-label>
+        <div style="margin-top: 10px;">
+          <ion-item class="input-field" style="height: 42px;">
+            <ion-input type="password" name="password" placeholder="Enter your password" ngModel required></ion-input>
+            <ion-icon style="width: 17px; height: 16px;" src="../../assets/icon/password.svg"></ion-icon>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+    <!-- </ion-item> -->
+
+    <div style="margin-top:15px;font-size: 13px;">
+      <span>By signing up you agree to the <a>terms & conditions</a> 
+        and <a>privacy policy</a></span>
+    </div>
+
+    <div style="margin-top: 25px">
+      <ion-button color="primary-contrast" class="contunue-btn" expand="block">CONTINUE</ion-button>
+    </div>
+  </form>
+  </div>
+</ion-content>

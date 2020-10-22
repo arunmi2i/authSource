@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar style="display: flex;">
+    <ion-row>
+      <ion-label>Add link</ion-label>
+      <ion-icon name="close" (click)="dismissModal()" item-right></ion-icon>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-label>Add link</ion-label> -->
+  <ion-buttons slot="end">
+    <ion-button onclick="dismissModal()">Close</ion-button>
+  </ion-buttons>
+  <ion-item class="input-field">
+    <ion-icon name="chevron-forward-outline" class="arrow-icon" slot="end" (click)="addPostLink()"></ion-icon>
+    <ion-input type="text" class="modal-textbox" placeholder="Paste the URL" [(ngModel)]="postLink" center></ion-input>
+  </ion-item>
+</ion-content>

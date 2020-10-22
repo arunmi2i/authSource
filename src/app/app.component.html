@@ -1,3 +1,22 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<ion-app class="md">
+  <ion-menu side="end" menuId="first" contentId="main-content">
+      <ion-header>
+          <ion-toolbar>
+            <ion-title>Categories</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+          <ion-list *ngFor="let menu of sideMenu" >
+            <!-- <ion-menu-toggle auto-hide="false"> -->
+              <ion-item lines="none">{{menu.title}}
+                <ion-img slot="end" src="../assets/icon/arrow.png" (click)="toggleSubCategory(menu.title)"></ion-img>
+              </ion-item>
+          </ion-list>
+        </ion-content>
+        <ion-footer>
+
+        </ion-footer>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

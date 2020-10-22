@@ -1,0 +1,33 @@
+.wider-modal {
+  --backdrop-opacity: 0.8 !important;
+  .modal-wrapper {
+    --height: 40% !important;
+    position: absolute;
+  } 
+}
+
+.modal-textbox {
+  // border: 0.5px solid rgba(183, 183, 183, 0.5);
+  // border-radius: 6px;
+  // width: 343px;
+  // font-size: 12px;
+  // letter-spacing: -0.02em;
+  // margin-left: 16px !important
+  margin-bottom: 8px
+}
+
+.input-field {
+  border: 0.5px solid rgba(183, 183, 183, 0.5);
+  border-radius: 6px;
+  height: 42px;
+  font-size: 12px;
+  margin-left: 16px;
+  width: 343px;
+  letter-spacing: -0.02em;
+}
+
+.arrow-icon {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+}

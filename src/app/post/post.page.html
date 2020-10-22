@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar style="height: 47px;">
+    <ion-title style="font-size: 14px;text-align: center;padding-bottom: 8px;">ADMIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="margin-top: 16px">
+    <div style="margin: 0px 10px;">
+      <span class="title-head">PREVIEW</span>
+    </div>
+    <ion-card style="display: flex;">
+      <ion-img src="../../assets/images/swimming.png"></ion-img>
+      <div>
+        <ion-card-header>
+          <span>5 Common Errors Endurance 
+              Athletes Make in Strength Training</span><br>
+          <span style="font-size: 10px;" href="#">swfea</span>      
+        </ion-card-header>
+      </div>
+    </ion-card>
+  </div>
+
+  <div style="margin: 0px 10px;">
+    <div>
+      <span class="title-head">SHORT DESCRIPTION</span>
+    </div>
+    <div>
+      <ion-textarea rows="3" class="input-field" placeholder="What this post is about?"></ion-textarea>
+    </div>
+  </div>
+
+  <div>
+    <div style="margin: 25px 10px 15px 10px;">
+      <span class="title-head">SELECT TOPIC</span>
+    </div>
+    <div style="margin: 0px 10px;">
+        <!-- <ion-row style="padding-bottom: 15px;">
+          <ion-col style="padding: 0px;">
+              <ion-checkbox class="checkbox" [(ngModel)]="running"></ion-checkbox>
+              <ion-label class="checkbox-label">Running</ion-label>
+          </ion-col>
+          <ion-col style="padding: 0px;">
+              <ion-checkbox class="checkbox" [(ngModel)]="bicycling"></ion-checkbox>
+              <ion-label class="checkbox-label">Bicycling</ion-label>
+          </ion-col>
+          <ion-col style="padding: 0px;">
+              <ion-checkbox class="checkbox" [(ngModel)]="swimming"></ion-checkbox>
+              <ion-label class="checkbox-label">Swimming</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="padding: 0px;">
+            <ion-checkbox class="checkbox" [(ngModel)]="trilathon"></ion-checkbox>
+            <ion-label class="checkbox-label">Trilathon</ion-label>
+          </ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col style="display: flex;" *ngFor="let item of topics">
+            <ion-checkbox class="checkbox" [(ngModel)]="item.checkbox"></ion-checkbox>
+            <ion-label class="checkbox-label"> {{item.name}}</ion-label>
+          </ion-col>
+        </ion-row>
+    </div>
+  </div>
+
+  <div style="margin: 25px 10px 15px 10px;">
+    <span class="title-head">SELECT SUB-TOPIC</span>
+    <div style="margin-top: 15px">
+        <ion-row>
+          <ion-col style="display: flex;" *ngFor="let item of subTopics">
+            <ion-checkbox [(ngModel)]="item.checkbox" class="checkbox" (click)="onChangeCheckbox()"></ion-checkbox>
+            <ion-label class="checkbox-label"> {{item.name}}</ion-label>
+          </ion-col>
+        </ion-row>
+      <!-- </ion-grid> -->
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer >
+  <ion-button color="primary-contrast" expand="block" class="post-button" click="addPost();">POST CONTENT</ion-button>
+</ion-footer>
