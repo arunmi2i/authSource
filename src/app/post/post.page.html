@@ -1,10 +1,12 @@
 <ion-header>
   <ion-toolbar style="height: 47px;">
+    <ion-icon name="close" slot="start" [routerLink]="['/tabs/explore']"></ion-icon>
     <ion-title style="font-size: 14px;text-align: center;padding-bottom: 8px;">ADMIN</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="post" (ngSubmit)="createPost()">
   <div style="margin-top: 16px">
     <div style="margin: 0px 10px;">
       <span class="title-head">PREVIEW</span>
@@ -26,7 +28,7 @@
       <span class="title-head">SHORT DESCRIPTION</span>
     </div>
     <div>
-      <ion-textarea rows="3" class="input-field" placeholder="What this post is about?"></ion-textarea>
+      <ion-textarea rows="3" class="input-field" formControlName="description" placeholder="What this post is about?"></ion-textarea>
     </div>
   </div>
 
@@ -35,30 +37,10 @@
       <span class="title-head">SELECT TOPIC</span>
     </div>
     <div style="margin: 0px 10px;">
-        <!-- <ion-row style="padding-bottom: 15px;">
-          <ion-col style="padding: 0px;">
-              <ion-checkbox class="checkbox" [(ngModel)]="running"></ion-checkbox>
-              <ion-label class="checkbox-label">Running</ion-label>
-          </ion-col>
-          <ion-col style="padding: 0px;">
-              <ion-checkbox class="checkbox" [(ngModel)]="bicycling"></ion-checkbox>
-              <ion-label class="checkbox-label">Bicycling</ion-label>
-          </ion-col>
-          <ion-col style="padding: 0px;">
-              <ion-checkbox class="checkbox" [(ngModel)]="swimming"></ion-checkbox>
-              <ion-label class="checkbox-label">Swimming</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col style="padding: 0px;">
-            <ion-checkbox class="checkbox" [(ngModel)]="trilathon"></ion-checkbox>
-            <ion-label class="checkbox-label">Trilathon</ion-label>
-          </ion-col>
-        </ion-row> -->
         <ion-row>
           <ion-col style="display: flex;" *ngFor="let item of topics">
-            <ion-checkbox class="checkbox" [(ngModel)]="item.checkbox"></ion-checkbox>
-            <ion-label class="checkbox-label"> {{item.name}}</ion-label>
+            <ion-checkbox class="checkbox" [value]="item.gid" (ionChange)="selectTopics($event, item.gid)"></ion-checkbox>
+            <ion-label class="checkbox-label"> {{item.title}}</ion-label>
           </ion-col>
         </ion-row>
     </div>
@@ -68,16 +50,42 @@
     <span class="title-head">SELECT SUB-TOPIC</span>
     <div style="margin-top: 15px">
         <ion-row>
-          <ion-col style="display: flex;" *ngFor="let item of subTopics">
-            <ion-checkbox [(ngModel)]="item.checkbox" class="checkbox" (click)="onChangeCheckbox()"></ion-checkbox>
-            <ion-label class="checkbox-label"> {{item.name}}</ion-label>
+          <ion-col style="display: flex;" *ngFor="let item of subTopics" size="4">
+            <ion-checkbox class="checkbox" [value]="item.gid" (ionChange)="selectSubTopics($event, item.gid)"></ion-checkbox>
+            <ion-label class="checkbox-label"> {{item.title}}</ion-label>
           </ion-col>
         </ion-row>
       <!-- </ion-grid> -->
     </div>
   </div>
+
+  <div style="margin: 0px 10px;">
+    <div style="padding-bottom: 7px;">
+      <span class="title-head">ENTER TAGS</span>
+    </div>
+    <div>
+      <!-- <ngx-tags [options]="tags" [removeLastOnBackspace]="true" [canDeleteTags]="true" [canAddTags]="true" [allowDupes]="false"></ngx-tags> -->
+      <tag-input formControlName="tags" class="input-tags" required [onlyFromAutocomplete]="false">
+        <tag-input-dropdown [zIndex]="1100"
+            [autocompleteItems]="tags"
+            [keepOpen]="false"
+            [focusFirstElement]="true"
+            [showDropdownIfEmpty]="true"
+            [dynamicUpdate]="false"
+            [limitItemsTo]="5">
+        </tag-input-dropdown>
+      </tag-input>
+      <!-- <tag-input style="color: #B7B7B7;" formArrayName="tags"></tag-input> -->
+      <!-- <ion-input class="input-field" formArrayName="tags"></ion-input> -->
+    </div>
+  </div>
+
+  <div style="margin: 25px 10px 0px 10px;">
+    <ion-button color="primary-contrast" expand="block" class="post-button" type="onSubmit">POST CONTENT</ion-button>
+  </div>
+  </form>
 </ion-content>
 
-<ion-footer >
+<!-- <ion-footer >
   <ion-button color="primary-contrast" expand="block" class="post-button" click="addPost();">POST CONTENT</ion-button>
-</ion-footer>
+</ion-footer> -->

@@ -4,9 +4,11 @@
 
 .save-btn {
   text-transform: none!important;
-  color: #56FF7B;
+  // color: #56FF7B;
+  color: #FAFF00;
   border: 1px solid;
   border-radius: 3px;
+  background: rgba(250, 255, 0, 0.05);
 }
 
 .card-title {
@@ -25,4 +27,13 @@
   font-weight: 400;
   text-align: left;
   color: #f3f3f3;
+}
+
+.slides {
+  height: 100% !important;
+}
+
+.chip {
+  border: 0.3px solid rgba(243, 243, 243, 0.5);
+  font-size: 12px;
 }

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="chevron-forward-outline" slot="start" style="transform: rotate(180deg);margin-left: 16px" [routerLink]="['/tabs/account']"></ion-icon>
+    <ion-title class="account-title">PERSONAL DETAILS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form style="margin-left: 16px;">
+    <div style="margin-top: 20px;">
+      <ion-label class="label">USERNAME</ion-label>
+      <ion-item class="input-item" color="transparent">
+        <ion-input type="text" class="input-field" placeholder=""></ion-input>
+      </ion-item>
+    </div>
+
+    <div style="margin-top:20px;">
+      <ion-label class="label">EMAIL</ion-label>
+      <ion-item class="input-item" color="transparent">
+        <ion-input type="text"class="input-field"></ion-input>
+      </ion-item>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <ion-label class="label">PASSWORD</ion-label>
+      <ion-item class="input-item" color="transparent">
+        <ion-input type="password" placeholder="Enter old password" class="input-field"></ion-input>
+      </ion-item>
+      <ion-item class="input-item" color="transparent" style="margin: 15px 0px">
+        <ion-input type="password" placeholder="Enter new password" class="input-field"></ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-button color="primary-contrast" expand="block" class="change-button" type="onSubmit">CHANGE PASSWORD</ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,33 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>interest</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div style="margin: 40px 16px 0 16px">
+  <div>
+    <span class="form-head">Select your interest</span>
+  </div>
+    <ion-grid style="padding: 0px">
+      <div>
+      <ion-row style="height: 240px">
+        <ion-col style="display: flex;" *ngFor="let item of [0,1,2,3];" size="6">
+          <!-- <ion-card> -->
+            <!-- <div [style.background-image]="'url(assets/images/swimming.png)'"></div> -->
+            <ion-img src="../../assets/images/swimming.png"></ion-img>
+          <!-- </ion-card> -->
+          <!-- <ion-label class="checkbox-label"> tri</ion-label> -->
+        </ion-col>
+      </ion-row>
+      </div>
+    </ion-grid>
+  </div>
+  <!-- <div style="margin: 25px 10px 0px 10px;">
+    <ion-button color="primary-contrast" expand="block" class="post-button" type="onSubmit">POST CONTENT</ion-button>
+  </div> -->
+</ion-content>
+
+<ion-footer style="bottom: 20px;">
+  <ion-button color="primary-contrast" expand="block" class="complete-button">COMPLETE</ion-button>
+</ion-footer>

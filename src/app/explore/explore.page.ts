@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../service/api.service';
+import { NavParams } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-explore',
@@ -7,7 +10,13 @@ import { Component } from '@angular/core';
 })
 export class ExplorePage {
 
-  constructor() {}
+  posts: any;
+  constructor(
+    private apiService: ApiService) 
+    {
+      // this.value = navParam.get('category');
+      // console.log(this.va);
+    }
 
   sliderConfig = {
     slidesPerView: 1.6,
@@ -27,4 +36,16 @@ export class ExplorePage {
     slidesPerView:4
   };
 
+  isUser: boolean = false;
+
+  ngOnInit() {
+    this.getActivePosts();
+  }
+
+  public getActivePosts() {
+    this.apiService.getPosts().subscribe((res: any) => {
+      this.posts = res.entity;
+      console.log(this.posts);
+    });
+  }
 }

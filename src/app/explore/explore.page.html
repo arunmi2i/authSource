@@ -1,17 +1,18 @@
-
-<ion-content fullscreen>
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+<ion-content>
+  <div *ngIf="isUser === true">
   <div style="margin-top: 65px;">
     <div class="title-head">
       <span class="card-title ">Your interests</span>
     </div>
     <ion-slides [options]="sliderConfig" pager>
-        <!-- <h4>Your Interest</h4> -->
       <ion-slide *ngFor="let card of [0,1,2,3,4]">
         <div >
         <ion-card style="background: #201C30;">
           <ion-img src="../../assets/images/swim.png"></ion-img>
           <ion-card-header>
-            <!-- <ion-card-subtitle>Subtitle</ion-card-subtitle> -->
             <ion-card-title class="card-head">5 Common Errors Endurance Athletes Make in Strength Training</ion-card-title>
           </ion-card-header>
 
@@ -134,27 +135,33 @@
       </ion-slide>
     </ion-slides>
   </div>
+  </div>
 
   <div>
     <div class="title-head">
-      <span class="card-title">Top 10</span>
+      <span class="card-title">Your Interest</span>
     </div>
     <ion-slides [options]="verticalSlider">
-      <ion-slide *ngFor="let card of [0,1,2,3]">
+      <ion-slide class="slides" *ngFor="let post of posts">
         <div>
-        <ion-card style="background: #201C30;">
-          <ion-img src="../../assets/images/swimming.png" style="height: 197px"></ion-img>
+        <ion-card style="background: #201C30;width: 343px;">
+          <ion-img src="{{post.siteImage}}" style="height: 188px;object-fit: fill;"></ion-img>
           <ion-card-header>
-            <ion-card-title class="card-head">5 Common Errors Endurance Athletes Make in Strength Training</ion-card-title>
+            <div style="display: flex">
+              <ion-chip color="primary-contrast" class="chip" *ngFor="let chip of post.tagDtos">
+                <ion-label>{{chip.title}}</ion-label>
+              </ion-chip>
+            </div>
+            <ion-card-title class="card-head">{{post.siteTitle}}</ion-card-title>
           </ion-card-header>
           <ion-card-content style="font-size: 13px; text-align:left;">
-              As I look back over my career as a strength coach and movement educator, I would have never
+              {{post.siteDescription}}
           </ion-card-content>
           <ion-footer>
             <ion-row>
               <div class="padding">
                 <ion-col >
-                    <ion-icon src="../../assets/icon/like.svg"></ion-icon>
+                  <ion-icon src="../../assets/icon/like.svg"></ion-icon>
                 </ion-col>
               </div>
               <div class="padding">

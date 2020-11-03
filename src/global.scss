@@ -33,3 +33,18 @@
     bottom: 0%;
   } 
 }
+
+@font-face {
+  font-family: 'DM Sans';
+  // src: url('../assets/fonts/sanfransico.ttf');//mine
+  src: url('./dm-sans/DMSans-Regular.ttf');//path to your font file
+}
+
+* {
+  font-family: 'DM Sans';
+}
+
+// ion-item {
+//   --background-color: var(--item-background);
+//   --item-background: black;  
+// }

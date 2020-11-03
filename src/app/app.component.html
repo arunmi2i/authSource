@@ -2,20 +2,20 @@
   <ion-menu side="end" menuId="first" contentId="main-content">
       <ion-header>
           <ion-toolbar>
-            <ion-title>Categories</ion-title>
+            <ion-title class="category-title">{{categories?.title}}</ion-title>
           </ion-toolbar>
         </ion-header>
 
         <ion-content>
-          <ion-list *ngFor="let menu of sideMenu" >
-            <!-- <ion-menu-toggle auto-hide="false"> -->
-              <ion-item lines="none">{{menu.title}}
-                <ion-img slot="end" src="../assets/icon/arrow.png" (click)="toggleSubCategory(menu.title)"></ion-img>
+          <ion-list *ngFor="let category of categories" >
+            <ion-menu-toggle auto-hide="false">
+              <ion-item lines="none" style="font-weight: 500;font-size: 14px;">{{category?.title}}
+                <ion-img slot="end" src="../assets/icon/arrow.png" (click)="selectCategory(category.title)"></ion-img>
               </ion-item>
+            </ion-menu-toggle>
           </ion-list>
         </ion-content>
         <ion-footer>
-
         </ion-footer>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

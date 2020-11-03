@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ExplorePage } from './explore.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { HeaderPage } from '../header/header.page';
 
 import { ExplorePageRoutingModule } from './explore-routing.module';
 
@@ -15,6 +16,6 @@ import { ExplorePageRoutingModule } from './explore-routing.module';
     ExploreContainerComponentModule,
     ExplorePageRoutingModule
   ],
-  declarations: [ExplorePage]
+  declarations: [ExplorePage, HeaderPage]
 })
-export class Tab1PageModule {}
+export class ExplorePageModule {}

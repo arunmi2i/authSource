@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AccountPage {
 
-  constructor() {}
+  constructor(private apiService: ApiService, private router: Router) {}
+
+  logout() {
+    this.apiService.logout().subscribe((res: any) => {
+      console.log(res);
+      this.router.navigate(['/login']);
+      localStorage.clear();
+    });
+  }
 
 }

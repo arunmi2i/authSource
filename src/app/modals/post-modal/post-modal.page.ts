@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController ,NavController} from '@ionic/angular';
+import { ModalController} from '@ionic/angular';
 
 import { Router } from '@angular/router'
+import { ApiService } from '../../service/api.service'
+
 @Component({
   selector: 'app-post-modal',
   templateUrl: './post-modal.page.html',
@@ -9,20 +11,19 @@ import { Router } from '@angular/router'
 })
 export class PostModalPage implements OnInit {
 
-  constructor(public modalController: ModalController,public router: Router, public navController: NavController) { }
+  constructor(public modalController: ModalController,
+              public router: Router,
+              public apiService: ApiService
+              ) { }
 
   postLink: string='';
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   async dismissModal() {
     await this.modalController.dismiss();
   }
 
   addPostLink() {
-    // this.router.navigate(['post'], "abc.com");
-    // this.navController.push(PostPage, {url:'abc.com'});
-    // this.navController.navigateForward('/post');
     this.router.navigate(['/post', {url: this.postLink}]);
     this.modalController.dismiss();
   }
