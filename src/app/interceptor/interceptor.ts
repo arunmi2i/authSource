@@ -8,19 +8,24 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+
+import { LoaderService } from '../service/loader.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor{
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loadingController: LoadingController, private loader: LoaderService) {}
+
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       headers: request.headers.set('Accept', 'application/json')
     });
 
+    // this.loader.showLoader();
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
@@ -29,11 +34,12 @@ export class Interceptor implements HttpInterceptor{
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        // console.error(error);
         if(error.status === 401) {
           this.router.navigate(['/login']);
         }
+
         return throwError(error);
-      }));
-  }
+      })
+    );
+  } 
 }

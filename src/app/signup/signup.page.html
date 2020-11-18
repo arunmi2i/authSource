@@ -4,7 +4,7 @@
       <span class="form-head">Create Account</span>
     </div>
 
-    <form [formGroup]="user" (ngSubmit)="onSubmit()">
+    <form [formGroup]="user" (ngSubmit)="signup()">
     <div style="margin-top: 20px">
       <div>
         <div>
@@ -13,7 +13,7 @@
         </div>
 
         <div style="margin-top: 10px;">
-          <ion-input class="input-field" formControlName="username" style="height: 42px;" type="text" placeholder="Enter your email address" aria-hidden="true" required></ion-input>
+          <ion-input class="input-field" formControlName="firstName" style="height: 42px;" type="text" placeholder="Enter your email address" aria-hidden="true" required></ion-input>
         </div>
       </div>
       <div style="margin-top:25px;">

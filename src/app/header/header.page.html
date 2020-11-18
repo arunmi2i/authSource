@@ -1,11 +1,29 @@
-<ion-toolbar>
+<ion-toolbar *ngIf="!isCategory && !isSubCategory">
   <div style="display:flex">
-    <ion-searchbar class="searchbar">
-        <!-- <ion-icon src="../../assets/icon/search.png"></ion-icon> -->
+    <ion-searchbar type="text" class="searchbar" (ionChange)="getItem($event)">
     </ion-searchbar>
     <div style="margin-top: 14px;">
       <ion-icon (click)="openSheet()" src="../../assets/icon/add.svg" style="width: 20px; height:20px;"></ion-icon>
     </div>
     <ion-menu-button menuToggle="right" (click)="toggleMenu($event)"></ion-menu-button>
+  </div>
+</ion-toolbar>
+
+<ion-toolbar class="title-toolbar" *ngIf="isCategory">
+  <div style="display: flex">
+    <ion-icon slot="start" name="chevron-forward-outline" class="arrow-icon"(click)="navigateBack();"></ion-icon>
+      <ion-title class="header-title" style="font-size: 14px;">{{category}}</ion-title>
+    <ion-menu-button menuToggle="right" class="category-menu" (click)="toggleMenu($event)"></ion-menu-button>
+  </div>
+</ion-toolbar>
+
+<ion-toolbar *ngIf="isSubCategory">
+  <div style="display: flex">
+    <ion-icon slot="start" name="chevron-forward-outline" class="arrow-icon"(click)="navigateBack();"></ion-icon>
+    <div style="padding-top: 10px;">
+      <ion-title class="header-title" style="font-size: 10px;">{{category}}</ion-title>
+      <ion-title class="header-title" style="font-size: 14px;">{{subCategory}}</ion-title>
+    </div>
+    <ion-menu-button menuToggle="right" class="category-menu" (click)="toggleMenu($event)"></ion-menu-button>
   </div>
 </ion-toolbar>

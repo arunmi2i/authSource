@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class EventService {
     this.channel.next(data);
   }
   
-  public subscribe(): Subject<any> {
-    return this.channel;
+  public subscribe(data: any): Subscription {
+    return this.channel.subscribe(data);
   }
 }

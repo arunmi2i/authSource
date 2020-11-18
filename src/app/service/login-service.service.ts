@@ -16,23 +16,23 @@ export class LoginService {
   url: string;
   
   login(params){
-    this.url="v1/session";
-    return this.apiService.loginApi(this.url, params);
-    // .subscribe(res => {
-    //   this.currentUser = res;
-    //   localStorage.setItem('currentUser', (this.currentUser));
-    //   // this.user.reset();
-    //   // this.router.navigate(['tabs/explore']);
-    //   console.log(this.currentUser);
-    //   return res;
-    // });
-    // .subscribe(res => {
-    //   return res;
-    // });
+    this.url="session";
+    const loginParam = "username=" + params.username + "&password=" + params.password;
+    return this.apiService.loginApi(this.url, loginParam);
   }
 
   public isAuthenticated() {
     return (localStorage.isAuthenticated === 'true');
+  }
+  
+  getOtpByEmail(param, success, fail) {
+    const url = "user/generate-otp?"+ "email=" + param.email;
+    this.apiService.patch(url).subscribe(res => {
+      res.error? fail(res.error): success(res);
+    },
+    error => {
+      fail(error);
+    });
   }
 
 }

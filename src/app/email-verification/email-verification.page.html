@@ -3,8 +3,8 @@
       <div>
         <span class="form-head">Verify your email</span>
       </div>
-  
-      <form (ngSubmit)="onSubmit()">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div style="margin-top: 20px;font-family: DM Sans;">
           <div>
             <div class="span-content">
@@ -16,7 +16,7 @@
             </div>
   
             <div style="margin-top: 10px;">
-              <ion-input class="input-field" type="text" placeholder="Enter your email address" aria-hidden="true" required></ion-input>
+              <ion-input class="input-field" type="text" formControlName="otp" placeholder="Enter your email address" aria-hidden="true" required></ion-input>
             </div>
           </div>
         </div>

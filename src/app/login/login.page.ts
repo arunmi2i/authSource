@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import {LoginService} from '../service/login-service.service'
-import { stringify } from 'querystring';
+import {LoginService} from '../service/login-service.service';
+import { ToasterService } from '../service/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { stringify } from 'querystring';
 })
 export class LoginPage implements OnInit {
 
-  constructor(public loginService: LoginService, public router: Router ) { }
+  constructor(public loginService: LoginService, public router: Router, public toast: ToasterService) { }
 
   ngOnInit() {}
   currentUser: any;
@@ -26,15 +26,18 @@ export class LoginPage implements OnInit {
   this.loginService.login(this.user.value)
     .subscribe(res => {
       this.currentUser = res;
-      localStorage.setItem('currentUser', stringify(this.currentUser));
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       localStorage.setItem('isAuthenticated', 'true');
       this.user.reset();
-      this.router.navigate(['tabs/explore']);
+      this.router.navigate(['home/explore']);
+    },
+    (errorResponse) => {
+      this.toast.showErrorToast(errorResponse.error.message);
     });
     // if(this.currentUser) {
     //   localStorage.setItem('curentUser', this.currentUser);
     //   this.user.reset();
-    //   this.router.navigate(['tabs/explore']);
+      // this.router.navigate(['home/explore']);
     // }
   }
 

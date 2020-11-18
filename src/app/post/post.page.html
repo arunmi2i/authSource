@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar style="height: 47px;">
-    <ion-icon name="close" slot="start" [routerLink]="['/tabs/explore']"></ion-icon>
+    <ion-icon name="close" slot="start" [routerLink]="['/home/explore']"></ion-icon>
     <ion-title style="font-size: 14px;text-align: center;padding-bottom: 8px;">ADMIN</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,12 +12,11 @@
       <span class="title-head">PREVIEW</span>
     </div>
     <ion-card style="display: flex;">
-      <ion-img src="../../assets/images/swimming.png"></ion-img>
-      <div>
+      <ion-img src="{{previewPost?.siteImage}}" class="preview-image"></ion-img>
+      <div style="height: 88px;">
         <ion-card-header>
-          <span>5 Common Errors Endurance 
-              Athletes Make in Strength Training</span><br>
-          <span style="font-size: 10px;" href="#">swfea</span>      
+          <span>{{previewPost?.siteTitle}}</span><br>
+          <a class="post-url" href="{{postUrl}}" target="_blank">{{postUrl}}</a>      
         </ion-card-header>
       </div>
     </ion-card>
@@ -81,7 +80,7 @@
   </div>
 
   <div style="margin: 25px 10px 0px 10px;">
-    <ion-button color="primary-contrast" expand="block" class="post-button" type="onSubmit">POST CONTENT</ion-button>
+    <ion-button color="primary-contrast" expand="block" class="post-button" [routerLink]="['/home/explore']" type="onSubmit">POST CONTENT</ion-button>
   </div>
   </form>
 </ion-content>

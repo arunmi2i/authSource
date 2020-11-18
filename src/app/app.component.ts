@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Router } from '@angular/router';
-import { TabsPage } from './tabs/tabs.page';
-import { ExplorePage } from './explore/explore.page';
+import { Router, NavigationEnd } from '@angular/router';
 import { ApiService } from './service/api.service';
 import { EventService } from './service/event.service';
+import { Navigation } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +15,10 @@ import { EventService } from './service/event.service';
 })
 export class AppComponent {
   showCategory: boolean = false;
-  showSubCategory: boolean = false;
+  // showSubCategory: boolean = false;
   categories: any =[];
+  subCategories: any = [];
+  menuTitle: string = "Categories";
 
   constructor(
     private platform: Platform,
@@ -39,10 +40,30 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.event.subscribe().subscribe((data) => {
-      console.log(this.categories.length);
-      if(!this.categories.length) {
+    this.event.subscribe((data: { isToggle: any; }) => {
+      if(data.isToggle && !this.categories.length) {
+        this.subCategories = [];
         this.getCategories();
+      }
+    });
+
+    this.event.subscribe((data: {isCategoryToggle: any; }) => {
+      if(data.isCategoryToggle && !this.subCategories.length) {
+        console.log(data);
+        this.getSubCategory();
+      }
+    });
+
+    this.event.subscribe((data: {showCategory: boolean}) => {
+      if(data.showCategory) {
+        this.showCategory = true;
+      }
+    });
+
+    this.router.events.subscribe((ev) => {
+      if(ev instanceof NavigationEnd) {
+        if(ev.url === '/home/explore')
+        this.showCategory = false;
       }
     });
   }
@@ -54,25 +75,30 @@ export class AppComponent {
     });
   }
 
-  selectCategory(title) {
-    console.log(title);
-    this.categories = [];
-    this.categories.title = title;
-    this.apiService.getSubTopics().subscribe((res: any) => {
-      this.categories = res.entity;
-    });
-    // console.log(this.categories);
-    this.categories.push(this.getTags());
-    // console.log(this.categories);
-    this.showCategory = !this.showCategory;
-    // this.router.navigate(['/post', {url: this.postLink}]);
-    // this.navController.navigateRoot('', title)
-    // this.router.navigate(['tabs/explore', {category: title}]);
+  public loadPost() {
+    this.event.publish({category: this.categories.title, subCategory: this.subCategories.title});
   }
 
-  getTags() {
-    this.apiService.getTags().subscribe((res: any) => {
-      return res.entity;
+  selectCategory(category) {
+    this.menuTitle = category.title;
+    this.apiService.getSubTopics().subscribe((res: any) => {
+      this.subCategories = res.entity;
+      this.subCategories.title = this.menuTitle;
+    });
+    this.showCategory = !this.showCategory;
+    this.event.publish({category: category.title});
+    this.router.navigate(['/home/explore/category/'+category.title]);
+  }
+
+  selectSubCategory(subTitle) {
+    this.event.publish({subCategory: subTitle});
+    this.router.navigate(['/home/explore/category/'+this.menuTitle+'/subCategory/'+subTitle]);
+  }
+
+  getSubCategory() {
+    this.apiService.getSubTopics().subscribe((res: any) => {
+      this.subCategories = res.entity;
+      this.categories.title = this.menuTitle;
     });
   }
 }

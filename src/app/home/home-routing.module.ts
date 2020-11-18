@@ -1,31 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { HomePage } from './home.page';
 // import { Library1Page } from '../tab2/library1/library1.page';
 import { LibraryPage } from '../library/library.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
-    component: TabsPage,
+    path: 'home',
+    component: HomePage,
     children: [
       {
         path: 'explore',
         loadChildren: () => import('../explore/explore.module').then(m => m.ExplorePageModule)
       },
       {
+        path: 'explore/category/:category',
+        loadChildren: () => import('../explore/explore.module').then(m=> m.ExplorePageModule)
+      },
+      {
+        path: 'explore/category/:category/subCategory/:subCategory',
+        loadChildren: () => import('../explore/explore.module').then(m=> m.ExplorePageModule)
+      },
+      {
         path: 'library',
-        // children: [
-        //   // {
-        //   //   path: 'mylib',
-        //   //   loadChildren: () => import('../library/mylibrary/mylibrary.module').then(m => m.MylibraryPageModule)
-        //   // },
-        //   {
-        //     path: '',
-        //     loadChildren: () => import('../library/library.module').then(m => m.LibraryPageModule)
-        //   }
-          
-        // ]
         loadChildren: () => import('../library/library.module').then(m => m.LibraryPageModule)
       },
       {
@@ -34,14 +31,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/explore',
+        redirectTo: '/home/explore',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/explore',
+    redirectTo: '/home/explore',
     pathMatch: 'full'
   }
 ];
@@ -50,4 +47,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class HomePageRoutingModule {}

@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import{ ActivatedRoute } from '@angular/router';
 import { ApiService } from '../service/api.service';
-import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
-// import { map } from 'rxjs/operators';
-// import { resolve } from 'url';
+import { EventService } from '../service/event.service';
 
 @Component({
   selector: 'app-post',
@@ -16,32 +15,47 @@ export class PostPage implements OnInit {
 
   constructor(public activatedRoute: ActivatedRoute,
               public apiService: ApiService,
-              public router: Router) {}
+              public router: Router,
+              public event: EventService) {}
 
-  postUrl: string;
-  topics: any;
-  subTopics: any;
-  tags: any;
+  public postUrl: string;
+  public topics: any;
+  public subTopics: any;
+  public tags: any;
+  public previewPost: any;
   // tags = ['run', 'jog'];
 
   post = new FormGroup({
     url: new FormControl(''),
-    description: new FormControl('') ,
-    topicGids: new FormArray([]),
+    description: new FormControl('', Validators.required) ,
+    topicGids: new FormArray([], Validators.required),
     subTopicGids: new FormArray([]),
-    tags:new FormControl()
+    tags:new FormControl([])
   });
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(state => {
       this.postUrl = state.get('url');
+      this.getPostByUrl(this.postUrl);
     });
+    this.getTopics();
+    this.getSubTopics();
+    this.getTags();
+  }
+
+  public getTopics() {
     this.apiService.getTopics().subscribe((res: any) => {
       this.topics = res.entity;
     });
+  }
+
+  public getSubTopics() {
     this.apiService.getSubTopics().subscribe((res:any) => {
       this.subTopics = res.entity;
     });
+  }
+
+  public getTags() {
     this.apiService.getTags().subscribe((res:any) => {
       this.tags = res.entity;
     });
@@ -49,10 +63,12 @@ export class PostPage implements OnInit {
 
   createPost() {
     this.post.value.url = this.postUrl;
-    this.post.value.tags = this.tags;
+    const tag: any = [];
+    this.post.value.tags.map(item => tag.push(item.value));
+    this.post.value.tags = tag;
     this.apiService.createPost(this.post.value).subscribe((res: any) => {
-      console.log(res);
-      this.router.navigate(['tabs/explore']);
+      this.event.publish({isPostCreated:true});
+      this.router.navigate(['home/explore']);
     });
   }
 
@@ -66,14 +82,20 @@ export class PostPage implements OnInit {
 
   selectSubTopics(event, gid) {
     if(event.target.checked) {
-      console.log(gid);
       this.post.value.subTopicGids.push(gid);
     } else {
       this.post.value.subTopicGids.pop(gid);
     }
   }
 
-  onSelect(event) {
-    console.log(event.target.value);
+  public getPostByUrl(url) {
+    this.apiService.getPostByUrl(url).subscribe((res: any)=> {
+      this.previewPost = res.entity;
+      this.post.controls['description'].setValue(res.entity.siteDescription);
+    });
   }
+
+  // onSelect(event) {
+  //   console.log(event.target.value);
+  // }
 }

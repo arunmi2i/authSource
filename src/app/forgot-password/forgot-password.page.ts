@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { LoginService } from '../service/login-service.service'
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordPage implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+  }
+  user = new FormGroup({
+    email: new FormControl('')
+  });
+
+  onSubmit() {
+    this.loginService.getOtpByEmail(this.user.value, (data: any) => {
+      this.router.navigate(['/email-verification']);
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

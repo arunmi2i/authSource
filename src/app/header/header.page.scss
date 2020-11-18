@@ -7,10 +7,30 @@
   left: auto !important;
 }
 
+// ::ng-deep .searchbar-input-container input {
+//   color: white;
+// }
+
 .wider-modal {
   --backdrop-opacity: 0.8 !important;
   .modal-wrapper {
     --height: 40% !important;
     position: absolute;
   } 
+}
+
+.arrow-icon {
+  transform: rotate(180deg);
+  margin-left: 16px;
+  margin-top: 18px;
+  margin-bottom: 16px;
+}
+
+.category-menu {
+  right: 0px;
+  position: absolute;
+}
+
+.title-toolbar {
+  height: 47px;
 }

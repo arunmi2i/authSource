@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../service/api.service';
-import { NavParams } from '@ionic/angular';
+import { PostService } from '../service/post.service'
+;import { EventService } from '../service/event.service';
 
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-explore',
@@ -10,13 +13,25 @@ import { NavParams } from '@ionic/angular';
 })
 export class ExplorePage {
 
-  posts: any;
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
+  posts: any = [];
+  limit: any = 10;
+  param = {
+    title: '',
+    siteTitle: '',
+    category: '',
+    subCategory:'',
+    page:0,
+    size:10
+  }
+
   constructor(
-    private apiService: ApiService) 
-    {
-      // this.value = navParam.get('category');
-      // console.log(this.va);
-    }
+    private apiService: ApiService,
+    private event: EventService,
+    private postService: PostService,
+    private activatedRoute: ActivatedRoute) 
+    { }
 
   sliderConfig = {
     slidesPerView: 1.6,
@@ -39,13 +54,101 @@ export class ExplorePage {
   isUser: boolean = false;
 
   ngOnInit() {
-    this.getActivePosts();
+    this.activatedRoute.paramMap.subscribe(param => {
+      const category = param.get('category');
+      const subCategory = param.get('subCategory');
+      if(category) {
+        this.param.category = category;
+        this.param.subCategory = subCategory;
+        // this.param.page=0;
+        this.getPostByCategories();
+      } else {
+        setTimeout(() => {
+          this.getActivePosts();
+        }, 100);
+      }
+    });
+    this.event.subscribe((data: { isPostCreated: any; }) => {
+      if(data.isPostCreated) {
+        this.getActivePosts();
+      }
+    });
+
+    this.event.subscribe((data: {searchPost: any}) => {
+      if(data.searchPost === '') {
+        this.param.page=0;
+        this.param.siteTitle = data.searchPost;
+        this.getActivePosts();
+      }
+      if(data.searchPost) {
+        this.posts = [];
+        this.param.page=0;
+        this.param.siteTitle = data.searchPost;
+        this.getActivePosts();
+      }
+    });
+
+    // this.event.subscribe((data: {category: any;}) => {
+    //   if(data.category) {
+    //     this.param.category = data.category;
+    //     this.param.page=0;
+    //     this.apiService.getPostsByCategories(this.param).subscribe((res: any) => {
+    //       this.posts = res.entity.content;
+    //     });
+    //   }
+    // });
+
+    // this.event.subscribe((data: {subCategory: any;}) => {
+    //   if(data.subCategory) {
+    //     this.param.subCategory = data.subCategory;
+    //     this.param.page=0;
+    //     this.getPostByCategories();
+    //   }
+    // });
   }
 
+  // public getPosts() {
+  //   this.event.subscribe((data: {category: any, subCategory: any}) => {
+  //     this.getActivePosts(data);
+  //   });
+  // }
+
   public getActivePosts() {
-    this.apiService.getPosts().subscribe((res: any) => {
-      this.posts = res.entity;
-      console.log(this.posts);
+    this.postService.getPosts(this.param, (data: any) => {
+      for(let post of data.entity.content) {
+        this.posts.push(post);
+      }
+    },
+    error => {
+      console.log(error);
     });
+  }
+
+  public getPostByCategories() {
+    // this.posts = [];
+    this.postService.getPostsByCategories(this.param, (data: any) => {
+      for(let post of data.entity.content) {
+        this.posts.push(post);
+      }
+    },
+    (error: any) => {
+      console.log(error);
+    });
+  }
+
+  loadMorePosts(event) {
+    this.param.page++;
+    if(this.param.category) {
+      this.getPostByCategories();
+    } else {
+      this.getActivePosts();
+    }
+    setTimeout(() => {
+      event.target.complete();
+      this.limit += 10;
+      if (this.posts.length < this.limit) {
+        event.target.disabled = true;
+      }
+    }, 500);
   }
 }

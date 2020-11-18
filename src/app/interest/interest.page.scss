@@ -13,3 +13,19 @@
   height: 46px;
   margin: 0px 16px 0px 16px;
 }
+
+.checkbox {
+  position: absolute;
+  top: 76px;
+  left: 148px;
+}
+
+.checkbox-label {
+  position: absolute;
+  top: 76px;
+}
+
+ion-checkbox::part(container) {
+  background-color: transparent;
+  border-radius: 15px;
+}

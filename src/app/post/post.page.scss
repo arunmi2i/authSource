@@ -68,6 +68,19 @@
   color: #B7B7B7;
 }
 
+.preview-image {
+  // width: 255px !important;
+  position: inherit;
+  object-fit: fill;
+  height: 88px;
+}
+
+.post-url {
+  color: #B7B7B7;
+  text-decoration: none;
+  font-size: 10px;
+}
+
 // ::shadow tag {
 //   background: transparent;
 // }

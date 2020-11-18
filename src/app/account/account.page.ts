@@ -13,8 +13,7 @@ export class AccountPage {
 
   logout() {
     this.apiService.logout().subscribe((res: any) => {
-      console.log(res);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/onboarding']);
       localStorage.clear();
     });
   }
