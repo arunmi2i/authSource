@@ -1,38 +1,38 @@
 <ion-content>
-  <div class="login-pad" style="margin: 50px 12px 0 12px;">
+  <div class="login-pad ion-padding">
     <div text-center>
       <span class="form-head">Welcome back!</span>
     </div>
 
     <form [formGroup]="user" (ngSubmit)="onSubmit()">
-    <div style="margin-top: 20px">
+    <div class="ion-margin-top">
       <div>
         <div>
           <ion-label class="form-label">Email</ion-label>
           <span class="form-phoneLink">Use phone number instead</span>
         </div>
 
-        <div style="margin-top: 10px;">
-          <ion-input class="input-field" formControlName="username" type="email" placeholder="Enter your email address" aria-hidden="true" required></ion-input>
-        </div>
-      </div>
-      <div style="margin-top:25px;">
-        <ion-label class="form-label">Password</ion-label>
-        <div style="margin-top: 10px;">
-          <ion-item class="input-field" style="height: 42px;" color="transparent">
-            <ion-input type="password" style="padding-bottom: 8px !important;" formControlName="password" placeholder="Enter your password" required></ion-input>
-            <ion-icon style="width: 17px; height: 16px;padding-bottom: 8px;" src="../../assets/icon/password.svg"></ion-icon>
+        <div >
+          <ion-item lines="none" class="input-item" color="transparent">
+            <ion-input formControlName="username" class="input-field" type="email" placeholder="Enter your email address" aria-hidden="true" required></ion-input>
           </ion-item>
         </div>
       </div>
+      <div class="ion-margin-vertical">
+        <ion-label class="form-label">Password</ion-label>
+        <ion-item lines="none" class="input-item" color="transparent" no-lines>
+          <ion-input type="{{type}}" formControlName="password" placeholder="Enter your password" required></ion-input>
+          <ion-icon *ngIf="!showPass" src="../../assets/icon/password.svg" (click)="showPassword()"></ion-icon>
+          <ion-icon *ngIf="showPass" name='eye' (click)="showPassword()"></ion-icon>
+        </ion-item>
+      </div>
     </div>
-    <!-- </ion-item> -->
 
-    <div style="margin-top:15px;font-size: 13px;">
+    <div>
       <span><a [routerLink]="['/forgot-password']">Forget Password?</a> </span>
     </div>
 
-    <div style="margin-top: 25px">
+    <div class="ion-margin-vertical">
       <ion-button color="primary-contrast" type="onSubmit" class="continue-btn" expand="block">LOG IN</ion-button>
     </div>
   </form>

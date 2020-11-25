@@ -20,11 +20,23 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
 
+  showPass: boolean = false;
+  type: string = 'password';
+
   user = new FormGroup({
     firstName: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl('')
   });
+
+  showPassword() {
+    this.showPass = !this.showPass;
+    if(this.showPass){
+      this.type = 'text';
+    } else {
+      this.type = 'password';
+    }
+  }
 
   signup() {
     this.user.value.email = this.user.value.firstName;
@@ -32,14 +44,16 @@ export class SignupPage implements OnInit {
       username: this.user.value.email,
       password: this.user.value.password
     };
-    this.apiService.createAccount(this.user.value)
-      .subscribe(res => {
-        this.loginService.login(loginParam).subscribe((res: any) => {
-          localStorage.setItem('currentUser', JSON.stringify(res));
-          localStorage.setItem('isAuthenticated', 'true');
-          this.router.navigate(['/interest']);
-        })
-      });
+    this.loginService.createAccount(this.user.value, (data: any) => {
+      this.loginService.login(loginParam).subscribe((res: any) => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        localStorage.setItem('isAuthenticated', 'true');
+        this.router.navigate(['/interest']);
+      })
+    },
+    error => {
+      console.log(error);
+    });
   }
   
 }

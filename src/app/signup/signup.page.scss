@@ -14,12 +14,23 @@
   letter-spacing: -0.01em;
 }
 
-.input-field {
+.input-item {
   border: 0.5px solid rgba(183, 183, 183, 0.5);
   border-radius: 6px;
   height: 42px;
   font-size: 13px;
   letter-spacing: -0.02em;
+  margin-top: 10px;
+  ion-icon {
+    width: 17px;
+    height: 16px;
+    padding-bottom: 5px;
+  }
+}
+
+.input-field {
+  height: 42px;
+  padding-bottom: 5px !important; 
 }
 
 .form-label {
@@ -33,4 +44,13 @@
   font-size: 14px;
   letter-spacing: -0.02em;
   color: rgba(243, 243, 243, 0.5);
+}
+
+.container {
+  padding-top: 50px;
+
+  .info-content {
+    font-size: 13px;
+    margin-top: 10px;
+  }
 }

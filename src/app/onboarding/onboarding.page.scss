@@ -3,18 +3,56 @@
   letter-spacing: -0.01em;
   font-weight: bold;
   height: 46px;
-  color: #ffffff;
-  background: linear-gradient(90.79deg, rgba(250, 10, 250, 0.25) 0%, rgba(77, 192, 255, 0.25) 54.88%, rgba(251, 255, 22, 0.25) 106.44%);
+  background:var(--ion-button-primary);
   border-radius: 6px;
-  margin: 0 16px;
+  border: 1px solid;
+  border-image-source: var(--ion-button-bordercolor);
 }
 
 .login-btn {
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 6px;
   height: 46px;
-  color: rgba(255, 255, 255, 0.9);
   letter-spacing: -0.01em;
   font-weight: bold;
-  margin: 0 16px;
 }
+
+ion-content {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    .login-top-container {
+      display: flex;
+      align-items: flex-end;
+      height: 50%;
+  
+      ion-img {
+        width: 100px;
+        margin: auto;
+      }
+
+      ion-img::part(image) {
+        border-radius: 50%;
+      }
+
+      .header {
+        font-family: 'Merriweather';
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 5px;
+      }
+
+      .content {
+        color: rgba(243, 243, 243, 0.8);
+        font-size: 13px;
+      }
+    }
+  
+    // .login-bottom-container {
+  
+    // }
+  } 
+  }

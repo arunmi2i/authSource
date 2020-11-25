@@ -27,6 +27,9 @@ export class InterestPage implements OnInit {
       .subscribe((res: any) => {
         if(res) {
           this.topics = res.entity;
+          this.topics.map(item => {
+            item.imgsource = "../../assets/images/"+ item.title +".png"
+          });
         }
       });
   }

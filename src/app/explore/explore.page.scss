@@ -14,7 +14,7 @@
 .card-title {
   font-size: 20px;
   color: #ffffff;
-  font-family: Merriweather;
+  font-family: 'Merriweather';
 }
 
 .title-head {
@@ -37,4 +37,32 @@
 .chip {
   border: 0.3px solid rgba(243, 243, 243, 0.5);
   font-size: 12px;
+}
+
+.container {
+  background: #100d1f;
+  ion-card {
+    background: #201C30;
+    width: 100%;
+
+    ion-img {
+      height: 188px;
+      object-fit: fill;
+    }
+
+    .card-content {
+      font-size: 13px;
+      text-align:left;
+    }
+
+    .chip-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .chip {
+      flex: 0 0 auto;
+    }
+  }
 }

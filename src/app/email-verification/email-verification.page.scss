@@ -1,3 +1,7 @@
+.login-pad {
+  padding-top: 50px; 
+}
+
 .continue-btn {
   height: 46px; 
   font-weight: bold;
@@ -12,7 +16,7 @@
   font-weight: bold;
   font-size: 20px;
   letter-spacing: -0.01em;
-  font-family: Merriweather;
+  font-family: 'Merriweather';
 }
 
 .input-field {
@@ -21,6 +25,7 @@
   height: 42px;
   font-size: 13px;
   letter-spacing: -0.02em;
+  margin-top: 10px;
 }
 
 .form-label {

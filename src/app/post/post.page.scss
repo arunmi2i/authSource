@@ -3,9 +3,10 @@
   font-size: 15px;
   color: #ffffff;
   letter-spacing: -0.01em;
-  background: linear-gradient(90.79deg, rgba(250, 10, 250, 0.25) 0%, rgba(77, 192, 255, 0.25) 54.88%, rgba(251, 255, 22, 0.25) 106.44%);
+  background: var(--ion-button-primary);
   height: 49px;
   border-radius: 6px;
+  margin: 0px !important;
 }
 
 .title-head {
@@ -15,8 +16,6 @@
 }
 
 .checkbox {
-  // width: 14px;
-  // height: 14px;
   padding: 2px;
 }
 
@@ -69,7 +68,7 @@
 }
 
 .preview-image {
-  // width: 255px !important;
+  width: 50%;
   position: inherit;
   object-fit: fill;
   height: 88px;
@@ -81,10 +80,40 @@
   font-size: 10px;
 }
 
-// ::shadow tag {
-//   background: transparent;
-// }
-// .post-button {
-//   background: linear-gradient(90.79deg, rgba(250, 10, 250, 0.25) 0%, rgba(77, 192, 255, 0.25) 54.88%, rgba(251, 255, 22, 0.25) 106.44%);
-//   margin: 0;
-// }
+.radio-btn {
+  padding: 2px 2px;
+  top: 3px;
+}
+
+.radio-label {
+  font-size: 14px;
+  padding-left: 6px;
+  letter-spacing: -0.002em;
+  color: #B7B7B7;
+}
+
+ion-toolbar {
+  height: 47px;
+  ion-title {
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+}
+
+ion-content {
+  ion-card {
+    display: flex;
+
+    ion-card-header {
+      padding: 10px;
+      height: 88px;
+    }
+  }
+
+  ion-row {
+    ion-col {
+      align-items: center;
+    }
+  }
+}

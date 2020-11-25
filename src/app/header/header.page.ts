@@ -27,19 +27,14 @@ export class HeaderPage implements OnInit {
   public isSubCategory: boolean = false;
   public category: any;
   public subCategory: any;
-  // public param = {
-  //   title: '',
-  //   siteTitle: '',
-  //   page:0,
-  //   size:10
-  // }
+  public userDetail: any = JSON.parse(localStorage.currentUser);
 
   ngOnInit() {
-    this.event.subscribe((data: {category: any;}) => {
-      if(data.category) {
-        // this.isCategory = true;
-      }
-    });
+    // this.event.subscribe((data: {category: any;}) => {
+    //   if(data.category) {
+    //     // this.isCategory = true;
+    //   }
+    // });
 
     this.activatedRoute.paramMap.subscribe(param => {
       this.category = param.get('category');
@@ -79,7 +74,6 @@ export class HeaderPage implements OnInit {
   }
 
   getItem(event) {
-    console.log(event.target.value);
     this.event.publish({searchPost: event.target.value});
   }
 

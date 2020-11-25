@@ -1,35 +1,22 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>interest</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content>
   <form (ngSubmit)="createInterest()">
-  <div style="margin: 40px 16px 0 16px">
-  <div>
-    <span class="form-head">Select your interest</span>
-  </div>
-    <ion-grid style="padding: 0px">
-      <div>
-      <ion-row style="height: 240px; position: relative;">
-        <ion-col style="display: flex;" *ngFor="let topic of topics;" size="6">
-          <!-- <ion-card> -->
-            <!-- <div [style.background-image]="'url(assets/images/swimming.png)'"></div> -->
-            <ion-checkbox class="checkbox" (ionChange)="selectTopics($event, topic.gid)"></ion-checkbox>
-            <ion-label class="checkbox-label">{{topic.title}}</ion-label>
-            <ion-img src="../../assets/images/swimming.png"></ion-img>
-          <!-- </ion-card> -->
-          <!-- <ion-label class="checkbox-label"> tri</ion-label> -->
-        </ion-col>
-      </ion-row>
-      </div>
-    </ion-grid>
+  <div class="container ion-padding">
+    <div>
+      <span class="form-head">Select your interest</span>
+    </div>
+      <ion-grid style="padding: 0px">
+        <div>
+        <ion-row style="height: 240px; position: relative;">
+          <ion-col *ngFor="let topic of topics;" size="6">
+              <ion-checkbox class="checkbox" (ionChange)="selectTopics($event, topic.gid)"></ion-checkbox>
+              <ion-label class="checkbox-label">{{topic.title}}</ion-label>
+              <ion-img src="../../assets/images/swimming.png" (click)="checkboxClick($event, topic.gid);"></ion-img>
+          </ion-col>
+        </ion-row>
+        </div>
+      </ion-grid>
   </div>
   </form>
-  <!-- <div style="margin: 25px 10px 0px 10px;">
-    <ion-button color="primary-contrast" expand="block" class="post-button" type="onSubmit">POST CONTENT</ion-button>
-  </div> -->
 </ion-content>
 
 <ion-footer style="bottom: 20px;">

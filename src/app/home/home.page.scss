@@ -8,3 +8,14 @@
   border-top: solid;
   border-top-width: 1px;
 }
+
+ion-tab-bar {
+  --background: #100d1f;
+  ion-label {
+    font-size: 16px;
+  }
+
+  ion-img {
+    height: 17px;
+  }
+}

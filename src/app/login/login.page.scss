@@ -6,6 +6,7 @@
   color: #ffffff;
   background: linear-gradient(90.79deg, rgba(250, 10, 250, 0.25) 0%, rgba(77, 192, 255, 0.25) 54.88%, rgba(251, 255, 22, 0.25) 106.44%);
   border-radius: 6px;
+  border: 1px solid ;
 }
 
 .form-head {
@@ -14,12 +15,16 @@
   letter-spacing: -0.01em;
 }
 
-.input-field {
+.input-item {
   border: 0.5px solid rgba(183, 183, 183, 0.5);
   border-radius: 6px;
-  height: 42px;
   font-size: 13px;
   letter-spacing: -0.02em;
+  margin-top: 10px;
+  ion-icon {
+    width: 17px;
+    height: 16px;
+  }
 }
 
 .form-label {
@@ -33,4 +38,18 @@
   font-size: 14px;
   letter-spacing: -0.02em;
   color: rgba(243, 243, 243, 0.5);
+}
+
+.input-icon {
+  width: 17px; height: 16px;
+  padding-bottom: 4px;
+}
+
+.login-pad {
+  padding-top: 50px;
+
+  span a {
+    font-size: 13px;
+    margin: 10px 0px;
+  }
 }

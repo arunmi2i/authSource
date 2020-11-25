@@ -1,33 +1,32 @@
 <ion-app class="md">
   <ion-menu side="end" menuId="first" contentId="main-content">
-      <ion-header>
-          <ion-toolbar>
-            <ion-title class="category-title" *ngIf="!showCategory">{{categories?.title}}</ion-title>
-            <ion-title class="category-title" *ngIf="showCategory">{{subCategories?.title}}</ion-title>
-          </ion-toolbar>
-        </ion-header>
+    <ion-header>
+      <div class="ion-padding-vertical">
+        <ion-title class="category-title ion-padding-horizontal" *ngIf="!showCategory">{{categories?.title}}</ion-title>
+        <ion-title class="category-title ion-padding-horizontal" *ngIf="showCategory">{{subCategories?.title}}</ion-title>
+      </div>
+    </ion-header>
+    <ion-content>
+      <div *ngIf="!showCategory"> 
+        <ion-list class="" *ngFor="let category of categories">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" style="font-weight: 500;font-size: 14px;" color="transparent">{{category?.title}}
+              <ion-img slot="end" src="../assets/icon/arrow.png" (click)="selectCategory(category)"></ion-img>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </div>
 
-        <ion-content>
-          <div *ngIf="!showCategory"> 
-          <ion-list *ngFor="let category of categories">
-            <ion-menu-toggle auto-hide="false">
-              <ion-item lines="none" style="font-weight: 500;font-size: 14px;" >{{category?.title}}
-                <ion-img slot="end" src="../assets/icon/arrow.png" (click)="selectCategory(category)"></ion-img>
-              </ion-item>
-            </ion-menu-toggle>
-          </ion-list>
-          </div>
-
-          <div *ngIf="showCategory">
-          <ion-list *ngFor="let category of subCategories" >
-            <ion-menu-toggle auto-hide="false">
-              <ion-item lines="none" style="font-weight: 500;font-size: 14px;" >{{category?.title}}
-                <ion-img slot="end" src="../assets/icon/arrow.png" (click)="selectSubCategory(category.title)"></ion-img>
-              </ion-item>
-            </ion-menu-toggle>
-          </ion-list>
-        </div>  
-        </ion-content>
+      <div *ngIf="showCategory">
+        <ion-list *ngFor="let category of subCategories" >
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" style="font-weight: 500;font-size: 14px;" color="transparent">{{category?.title}}
+              <ion-img slot="end" src="../assets/icon/arrow.png" (click)="selectSubCategory(category.title)"></ion-img>
+            </ion-item>
+          </ion-menu-toggle><ion-title class="category-title" *ngIf="!showCategory">{{categories?.title}}</ion-title>
+        </ion-list>
+      </div>  
+    </ion-content>
         <ion-footer>
         </ion-footer>
     </ion-menu>

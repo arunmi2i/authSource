@@ -21,7 +21,7 @@ export class ForgotPasswordPage implements OnInit {
 
   onSubmit() {
     this.loginService.getOtpByEmail(this.user.value, (data: any) => {
-      this.router.navigate(['/email-verification']);
+      this.router.navigate(['/email-verification', {email: this.user.value.email}]);
     },
     error => {
       console.log(error);

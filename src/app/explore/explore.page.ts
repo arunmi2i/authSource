@@ -51,16 +51,13 @@ export class ExplorePage {
     slidesPerView:4
   };
 
-  isUser: boolean = false;
-
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(param => {
       const category = param.get('category');
       const subCategory = param.get('subCategory');
       if(category) {
         this.param.category = category;
-        this.param.subCategory = subCategory;
-        // this.param.page=0;
+        this.param.subCategory = subCategory || 'All';
         this.getPostByCategories();
       } else {
         setTimeout(() => {
@@ -87,31 +84,7 @@ export class ExplorePage {
         this.getActivePosts();
       }
     });
-
-    // this.event.subscribe((data: {category: any;}) => {
-    //   if(data.category) {
-    //     this.param.category = data.category;
-    //     this.param.page=0;
-    //     this.apiService.getPostsByCategories(this.param).subscribe((res: any) => {
-    //       this.posts = res.entity.content;
-    //     });
-    //   }
-    // });
-
-    // this.event.subscribe((data: {subCategory: any;}) => {
-    //   if(data.subCategory) {
-    //     this.param.subCategory = data.subCategory;
-    //     this.param.page=0;
-    //     this.getPostByCategories();
-    //   }
-    // });
   }
-
-  // public getPosts() {
-  //   this.event.subscribe((data: {category: any, subCategory: any}) => {
-  //     this.getActivePosts(data);
-  //   });
-  // }
 
   public getActivePosts() {
     this.postService.getPosts(this.param, (data: any) => {

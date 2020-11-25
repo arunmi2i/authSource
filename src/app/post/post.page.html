@@ -1,20 +1,21 @@
 <ion-header>
-  <ion-toolbar style="height: 47px;">
+  <ion-toolbar>
     <ion-icon name="close" slot="start" [routerLink]="['/home/explore']"></ion-icon>
-    <ion-title style="font-size: 14px;text-align: center;padding-bottom: 8px;">ADMIN</ion-title>
+    <ion-title >ADMIN</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <form [formGroup]="post" (ngSubmit)="createPost()">
-  <div style="margin-top: 16px">
-    <div style="margin: 0px 10px;">
+  <div>
+    <div>
       <span class="title-head">PREVIEW</span>
     </div>
-    <ion-card style="display: flex;">
-      <ion-img src="{{previewPost?.siteImage}}" class="preview-image"></ion-img>
-      <div style="height: 88px;">
-        <ion-card-header>
+    <ion-card class="ion-no-margin">
+      <ion-img src="{{previewPost?.siteImage}}" class="preview-image" *ngIf="post.value.defaultImage==='URL'"></ion-img>
+      <ion-img src="../../assets/images/authSource.png" class="preview-image" *ngIf="post.value.defaultImage!=='URL'"></ion-img>
+      <div>
+        <ion-card-header class="ion-padding-horizontal">
           <span>{{previewPost?.siteTitle}}</span><br>
           <a class="post-url" href="{{postUrl}}" target="_blank">{{postUrl}}</a>      
         </ion-card-header>
@@ -22,7 +23,22 @@
     </ion-card>
   </div>
 
-  <div style="margin: 0px 10px;">
+  <div class="ion-padding-top">
+    <div>
+      <span class="title-head">IMAGE</span>
+    </div>
+    <div>
+      <ion-radio-group formControlName="defaultImage">
+        <ion-radio class="radio-btn" name="URL" value="URL" checked="URL"></ion-radio>
+        <ion-label class="radio-label">From URL </ion-label>
+        &nbsp;&nbsp;&nbsp;
+        <ion-radio class="radio-btn" name="defaultImage" value="defaultImage"></ion-radio>
+        <ion-label class="radio-label">Default Athsource Image</ion-label>
+      </ion-radio-group>
+    </div>
+  </div>
+
+  <div class="ion-padding-top">
     <div>
       <span class="title-head">SHORT DESCRIPTION</span>
     </div>
@@ -31,40 +47,38 @@
     </div>
   </div>
 
-  <div>
-    <div style="margin: 25px 10px 15px 10px;">
+  <div class="ion-padding-top">
+    <div>
       <span class="title-head">SELECT TOPIC</span>
     </div>
-    <div style="margin: 0px 10px;">
+    <div>
         <ion-row>
-          <ion-col style="display: flex;" *ngFor="let item of topics">
-            <ion-checkbox class="checkbox" [value]="item.gid" (ionChange)="selectTopics($event, item.gid)"></ion-checkbox>
+          <ion-col style="display: flex;" *ngFor="let item of topics;">
+            <ion-checkbox class="checkbox" name="item" [value]="item.gid" (ionChange)="selectTopics($event, item.gid)"></ion-checkbox>
             <ion-label class="checkbox-label"> {{item.title}}</ion-label>
           </ion-col>
         </ion-row>
     </div>
   </div>
 
-  <div style="margin: 25px 10px 15px 10px;">
+  <div class="ion-padding-top">
     <span class="title-head">SELECT SUB-TOPIC</span>
-    <div style="margin-top: 15px">
-        <ion-row>
-          <ion-col style="display: flex;" *ngFor="let item of subTopics" size="4">
-            <ion-checkbox class="checkbox" [value]="item.gid" (ionChange)="selectSubTopics($event, item.gid)"></ion-checkbox>
-            <ion-label class="checkbox-label"> {{item.title}}</ion-label>
-          </ion-col>
-        </ion-row>
-      <!-- </ion-grid> -->
+    <div>
+      <ion-row>
+        <ion-col style="display: flex;" *ngFor="let item of subTopics" size="4">
+          <ion-checkbox class="checkbox" [value]="item.gid" (ionChange)="selectSubTopics($event, item.gid)"></ion-checkbox>
+          <ion-label class="checkbox-label"> {{item.title}}</ion-label>
+        </ion-col>
+      </ion-row>
     </div>
   </div>
 
-  <div style="margin: 0px 10px;">
+  <div class="ion-padding-top">
     <div style="padding-bottom: 7px;">
       <span class="title-head">ENTER TAGS</span>
     </div>
     <div>
-      <!-- <ngx-tags [options]="tags" [removeLastOnBackspace]="true" [canDeleteTags]="true" [canAddTags]="true" [allowDupes]="false"></ngx-tags> -->
-      <tag-input formControlName="tags" class="input-tags" required [onlyFromAutocomplete]="false">
+      <tag-input formControlName="tags" class="input-tags" [onlyFromAutocomplete]="false">
         <tag-input-dropdown [zIndex]="1100"
             [autocompleteItems]="tags"
             [keepOpen]="false"
@@ -74,17 +88,11 @@
             [limitItemsTo]="5">
         </tag-input-dropdown>
       </tag-input>
-      <!-- <tag-input style="color: #B7B7B7;" formArrayName="tags"></tag-input> -->
-      <!-- <ion-input class="input-field" formArrayName="tags"></ion-input> -->
     </div>
   </div>
 
-  <div style="margin: 25px 10px 0px 10px;">
+  <div class="ion-padding-top">
     <ion-button color="primary-contrast" expand="block" class="post-button" [routerLink]="['/home/explore']" type="onSubmit">POST CONTENT</ion-button>
   </div>
   </form>
 </ion-content>
-
-<!-- <ion-footer >
-  <ion-button color="primary-contrast" expand="block" class="post-button" click="addPost();">POST CONTENT</ion-button>
-</ion-footer> -->

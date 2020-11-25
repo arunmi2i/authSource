@@ -10,16 +10,6 @@ export class HomePage {
 
   constructor() {}
 
-  @ViewChild('tabs', { static: false }) tabs: IonTabs;
-
-  public selectCurrentTab(event) {
-    console.log(event);
-  }
-
-  public setCurrentTab() {
-    let currentTab = this.tabs.getSelected();
-    console.log("currnet tab", this.tabs.getSelected());
-    console.log(currentTab.valueOf());
-  }
+  // @ViewChild('tabs', { static: false }) tabs: IonTabs;
 
 }

@@ -1,3 +1,12 @@
+.container {
+  padding-top: 50px; 
+
+  ion-img {
+    // width: 166px;
+    height: 117px;
+    object-fit: fill;
+  }
+}
 .form-head {
   font-weight: bold;
   font-size: 20px;
@@ -16,13 +25,16 @@
 
 .checkbox {
   position: absolute;
-  top: 76px;
-  left: 148px;
+  top: 90px;
+  right: 8px;
+  // --border-color: transparent;
 }
 
 .checkbox-label {
   position: absolute;
-  top: 76px;
+  top: 90px;
+  left: 12px;
+  font-size: 14px;
 }
 
 ion-checkbox::part(container) {

@@ -1,24 +1,31 @@
 <ion-content>
-  <div class="container">
-    <div class="form-head">
-      <span>Notifications</span>
+  <div class="container ion-padding">
+    <div class="form-head ion-text-center">
+      <ion-col>
+        <span>Notifications</span>
+      </ion-col>
+    </div>
+    <div class="top-container">
+      <ion-row>
+        <ion-col class="ion-margin-top ion-padding"
+          size-xs="12" size-sm="12" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4" offset-xl="4">  
+          <ion-img  src="../../assets/images/notification.png"></ion-img>
+        </ion-col>
+        <ion-col class="ion-text-center ion-no-padding header"
+          size-xs="12" size-sm="12" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4" offset-xl="4">
+          <span>Get notified <br>to the most important updates</span>
+        </ion-col>
+      </ion-row>
     </div>
 
-    <div>
-      <div class="image-content">
-        <ion-img src="../../assets/images/notification.png"></ion-img>
-      </div>
-      <div class="container-content">
-        <span>Get notified <br>to the most important updates</span>
-      </div>
+    <div class="ion-text-center bottom-container ion-padding-horizontal">
+      <ion-col>
+        <span [routerLink]="['/home/explore']">I’ll do it later</span>
+      </ion-col>
     </div>
-  </div>
-
-  <div class="span-content">
-    <span>I’ll do it later</span>
   </div>
 </ion-content>
 
-<ion-footer style="bottom: 20px;">
+<ion-footer class="ion-padding-bottom">
   <ion-button color="primary-contrast" expand="block" class="footer-button" (click)="turnOnNotification()">TURN ON PUSH NOTIFICATIONS</ion-button>
 </ion-footer>

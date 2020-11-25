@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 
 export class ApiService {
-  baseUrl:string = "http://localhost:7080/v1/";
+  baseUrl:string = "http://ec2-34-209-37-235.us-west-2.compute.amazonaws.com/v1/"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,14 +26,6 @@ export class ApiService {
     return this.httpClient
       .get(this.baseUrl+ url, {withCredentials: true})
       .pipe(map((res:any) => {
-        return res;
-      }));
-  }
-
-  public patchWithoutCredential(url) {
-    return this.httpClient
-      .patch(this.baseUrl + url, null)
-      .pipe(map((res: any) => {
         return res;
       }));
   }

@@ -1,44 +1,84 @@
-.container {
-  margin: 40px 16px 0 16px;
+// .container {
+//   margin: 40px 16px 0 16px;
+// }
+
+ion-content {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    .form-head {
+      height: 5%;
+      display: flex;
+      align-items: flex-end;
+      font-weight: bold;
+      span {
+        font-family: 'Merriweather';
+        font-size: 20px;
+      }
+    }
+
+    .top-container {
+      display: flex;
+      align-items: flex-end;
+      height: 50%;
+
+      ion-row {
+        width: 100%;
+
+        ion-col {
+          span {
+            font-size: 20px;
+          }
+        }
+      }
+  
+      ion-img {
+        width: 100px;
+        margin: auto;
+      }
+    }
+  
+    .bottom-container {
+      display: flex;
+      align-items: flex-end;
+      height: 40%;
+    }
+  } 
 }
 
-.form-head {
-  font-weight: bold;
-  letter-spacing: -0.01em;
-  text-align: center;
-  font-family: Merriweather;
-}
+// .form-head span {
+//   font-family: Merriweather;
+//   font-size: 20px;
+// }
 
-.form-head span {
-  font-family: Merriweather;
-  font-size: 20px;
-}
+// .image-content{
+//   position: absolute;
+//   left: 36%;
+//   right: 36.05%;
+//   top: 31.48%;
+//   bottom: 56.52%;
+// }
 
-.image-content{
-  position: absolute;
-  left: 36%;
-  right: 36.05%;
-  top: 31.48%;
-  bottom: 56.52%;
-}
+// .container-content {
+//   position: absolute;
+//   width: 301px;
+//   top:290px;
+//   left: 37px;
+//   text-align: center;
+// }
 
-.container-content {
-  position: absolute;
-  width: 301px;
-  top:290px;
-  left: 37px;
-  text-align: center;
-}
-
-.container-content span {
-  font-family: Merriweather;
-  font-weight: bold;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-}
+// .container-content span {
+//   font-family: Merriweather;
+//   font-weight: bold;
+//   font-size: 20px;
+//   letter-spacing: -0.01em;
+// }
 
 .footer-button {
-  background: linear-gradient(90.79deg, rgba(250, 10, 250, 0.25) 0%, rgba(77, 192, 255, 0.25) 54.88%, rgba(251, 255, 22, 0.25) 106.44%);
+  background: var(--ion-button-primary);
   border-radius: 6px;
   font-weight: bold;
   font-size: 15px;
@@ -47,10 +87,10 @@
   margin: 0px 16px 0px 16px;
 }
 
-.span-content {
-  position: absolute;
-  left: 149px;
-  top: 565px;
-  font-size: 14px;
-  color: rgba(243, 243, 243, 0.8);
-}
+// .span-content {
+//   position: absolute;
+//   left: 149px;
+//   top: 565px;
+//   font-size: 14px;
+//   color: rgba(243, 243, 243, 0.8);
+// }

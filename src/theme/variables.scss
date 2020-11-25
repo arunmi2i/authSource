@@ -148,6 +148,10 @@
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
 
+    
+    --ion-button-bordercolor: linear-gradient(90.79deg, #FA0AFA 0%, #4DC0FF 54.88%, #FBFF16 106.44%);
+    --ion-button-primary: linear-gradient(90.79deg, rgba(250, 10, 250, 0.25) 0%, rgba(77, 192, 255, 0.25) 54.88%, rgba(251, 255, 22, 0.25) 106.44%);
+    // --ion-menu-button: #ffffff;
   }
 
   /*
@@ -231,5 +235,10 @@
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
+  }
+  
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('./../assets/merriweather/Merriweather-Regular.ttf')
   }
 // }

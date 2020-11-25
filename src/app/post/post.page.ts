@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import{ ActivatedRoute } from '@angular/router';
+import{ ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
+// import { Router } from '@angular/router'
 import { EventService } from '../service/event.service';
 
 @Component({
@@ -23,14 +23,14 @@ export class PostPage implements OnInit {
   public subTopics: any;
   public tags: any;
   public previewPost: any;
-  // tags = ['run', 'jog'];
 
   post = new FormGroup({
     url: new FormControl(''),
     description: new FormControl('', Validators.required) ,
     topicGids: new FormArray([], Validators.required),
     subTopicGids: new FormArray([]),
-    tags:new FormControl([])
+    tags:new FormControl([]),
+    defaultImage: new FormControl('URL')
   });
 
   ngOnInit() {
@@ -62,7 +62,13 @@ export class PostPage implements OnInit {
   }
 
   createPost() {
+    if(this.post.value.defaultImage === 'defaultImage') {
+      this.post.value.defaultImage = true;
+    } else {
+      this.post.value.defaultImage = false;
+    }
     this.post.value.url = this.postUrl;
+    this.post.value.siteTitle = this.previewPost.siteTitle;
     const tag: any = [];
     this.post.value.tags.map(item => tag.push(item.value));
     this.post.value.tags = tag;
@@ -91,11 +97,8 @@ export class PostPage implements OnInit {
   public getPostByUrl(url) {
     this.apiService.getPostByUrl(url).subscribe((res: any)=> {
       this.previewPost = res.entity;
+      this.post.value.defaultImage = res.entity.defaultImage;
       this.post.controls['description'].setValue(res.entity.siteDescription);
     });
   }
-
-  // onSelect(event) {
-  //   console.log(event.target.value);
-  // }
 }

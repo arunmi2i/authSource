@@ -49,7 +49,6 @@ export class AppComponent {
 
     this.event.subscribe((data: {isCategoryToggle: any; }) => {
       if(data.isCategoryToggle && !this.subCategories.length) {
-        console.log(data);
         this.getSubCategory();
       }
     });

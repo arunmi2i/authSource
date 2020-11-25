@@ -20,19 +20,14 @@ export class PostService {
     });
   }
 
-  // public createPost(param) {
-  //   const postUrl = "post";
-  //   this.apiService.post(postUrl, param).subscribe((res: any) => {
-  //     return res;
-  //   });
-  // }
-
   public getPosts(param, success, fail) {
     const postUrl = 'post/interest?page='+ param.page +
     '&size='+ param.size +
     '&direction=DESC'+
-    '&title.LIKE='+ param.title +
-    '&siteTitle.LIKE='+ param.siteTitle;
+    '&siteTitle.LIKE='+ param.siteTitle + 
+    '&siteDescription.LIKE='+param.title+
+    '&description.LIKE='+param.siteTitle+
+    '&url.LIKE='+param.siteTitle;
     this.apiService.get(postUrl).subscribe(res => {
       res.error? fail(res.error): success(res);
     },
